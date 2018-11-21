@@ -8,6 +8,8 @@ class ControllerBase
 
   # Setup the controller
   def initialize(req, res)
+    @req = req
+    @res = res
   end
 
   # Helper method to alias @already_built_response
@@ -16,6 +18,9 @@ class ControllerBase
 
   # Set the response status code and header
   def redirect_to(url)
+    @res.status = 300
+    @res['location'] = url
+    nil
   end
 
   # Populate the response with content.
@@ -37,4 +42,3 @@ class ControllerBase
   def invoke_action(name)
   end
 end
-
