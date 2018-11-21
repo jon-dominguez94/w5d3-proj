@@ -39,10 +39,11 @@ class ControllerBase
   # use ERB and binding to evaluate templates
   # pass the rendered html to render_content
   def render(template_name)
+    raise if already_built_response?
     path = File.dirname(__FILE__)
     new_path = File.join(path, 'views', "#{template_name}.html_safe")
-
-
+    new_path.result(binding)
+    @already_built_response = true
   end
 
   # method exposing a `Session` object
