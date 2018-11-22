@@ -51,8 +51,9 @@ class Router
   # should return the route that matches this request
   def match(req)
     @routes.each do |route|
-      return route if matches?(req)
+      return route if route.matches?(req)
     end
+    nil
   end
 
   # either throw 404 or call run on a matched route
