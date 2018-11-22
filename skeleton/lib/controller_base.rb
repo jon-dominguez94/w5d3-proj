@@ -24,7 +24,7 @@ class ControllerBase
     @res.status = 302
     @res['location'] = url
     @already_built_response = true
-    @session.store_session(@res)
+    session.store_session(@res)
     nil
   end
 
@@ -36,7 +36,7 @@ class ControllerBase
     @res['Content-Type'] = content_type
     @res.write(content)
     @already_built_response = true
-    @session.store_session(@res)
+    session.store_session(@res)
     nil
   end
 
